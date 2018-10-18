@@ -1,0 +1,30 @@
+Example:
+[
+	{
+	  "TYPE":"DIGITAL",
+	  "PIN":13,
+	  "STATUS":"HIGH",
+	  "NAME":"LED_ROOM"
+	},
+
+	{
+	  "TYPE":"DIGITAL",
+	  "PIN":4,
+	  "STATUS":"LOW",
+	  "NAME":"DOOR_KITHCEN"
+	},
+	
+	{
+	  "TYPE":"PWM",
+	  "PIN":7,
+	  "VALUE":134,
+	  "NAME":"LED_2_ROOM"
+	}
+]
+
+1) Type of pin:
+		a)DIGITAL - only ON or OFF
+		b)PWM - pwm signal from 0 to 255
+2) Number of pin - which pin run
+3) Status - turn ON or turn OFF pin. If it's ANALOG, setup VALUE to pin
+4) Name - jsut name of pin. It's not important

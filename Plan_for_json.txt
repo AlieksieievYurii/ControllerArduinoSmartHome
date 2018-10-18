@@ -1,0 +1,13 @@
+Arduino Mega pins:
+2 - PWM
+3 - PWM
+4 - PWM
+5 - PWM
+6 - PWM
+7 - PWM
+8 - PWM
+9 - PWM
+10 - PWM
+11 - PWM
+12 - PWM
+13 - PWM
