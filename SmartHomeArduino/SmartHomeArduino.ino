@@ -14,11 +14,14 @@
 
 #include <ArduinoJson.h>
 #include <Ethernet.h>
+#include <dht11.h>
 
 #define LIGTH_SENSOR A0
+#define DHT_SENSOR 2
 
 byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 char server[] = "192.168.0.106";//My local server
+dht11 DHT;
 
 const String KEY = "3we42fi27rh";
 
@@ -28,7 +31,7 @@ EthernetClient client;
 boolean flagForReadingJson = false;
 
 const byte PINS_OUTPUT[] = 
-        {2,3,4,5,6,7,8,9,10,
+        {3,4,5,6,7,8,9,10,
         11,12,13,22,23,24,25,
         26,27,28,29,30,31,32,
         33,34,35,36,37,38,39,
@@ -99,9 +102,12 @@ String getParamsForServer()
   String params;
   params.concat("key=");
   params.concat(KEY);
+  params.concat("&temperature=");
+  params.concat(getTemperature());
+  params.concat("&humidity=");
+  params.concat(getHumidity());
   params.concat("&light=");
   params.concat(analogRead(LIGTH_SENSOR));
-  params.concat("&test=OK");
   
   return params;
 }
@@ -169,5 +175,15 @@ void FunctionActionPWM(JsonObject root)
  byte value = valueString.toInt();
  
  analogWrite(pin,value);
+}
+int getTemperature()
+{
+  int chk = DHT.read(DHT_SENSOR);
+  return DHT.temperature;
+}
+int getHumidity()
+{
+  int chk = DHT.read(DHT_SENSOR);
+  return DHT.humidity;
 }
 
